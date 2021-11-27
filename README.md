@@ -1,14 +1,22 @@
 # Firstleaf Take Home Project
 
 ## instructions
+
 ### to start the application (step 1)
 'docker-compose up'
+
+### documentation
+
+url: http://localhost:3005 \
+populate users: docker exec -it firstleaf_test bash -c 'bundle exec rails populate:users' \
+doc: /api-docs
 
 ### to run test (require first step)
 docker exec -it firstleaf_test bash -c 'bundle exec rspec'
 
 ### Register user
-endpoint: POST /users
+doc: /api-docs\
+endpoint: POST /users\
 body exemple to register
 ```
 {
@@ -24,7 +32,7 @@ body exemple to register
 ```
 
 ### List all users and search
-endpoint: GET /users (return all users)
+endpoint: GET /users (return all users)\
 endpoint: GET /users?query={something} (search user by query)
 ## Assignment
 Today, we're going to design an application that will function as a user service.
