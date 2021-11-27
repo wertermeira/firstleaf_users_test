@@ -1,5 +1,5 @@
 FROM ruby:2.5.1
-
+ENV BUNDLER_VERSION=1.17.3
 RUN apt-get update -qq \
   && apt-get install -y build-essential libpq-dev nodejs \
   && apt-get clean all \
@@ -15,9 +15,8 @@ RUN mkdir /app
 # on whether these files have changed or not.
 COPY Gemfile Gemfile.lock /app/
 WORKDIR /app
-RUN bundle install
-
+RUN bundle config set --local path 'vendor/cache'
+RUN bundle check || bundle install
 # Copy over the rest of the app's files
 COPY . /app
 
-CMD ["bundle", "exec", "rails", "s", "-p", "3005", "-b", "0.0.0.0"]

@@ -14,80 +14,27 @@ RSpec.configure do |config|
       paths: {},
       components: {
         schemas: {
-          not_found: {
+          user: {
             type: :object,
             properties: {
-              errors: {
-                type: :object,
-                properties: {
-                  status: { type: :integer, example: 404 },
-                  message: { type: :string, example: 'not found' }
-                }
-              }
-            }
-          },
-          setting: {
-            type: :object,
-            properties: {
-              type: { type: :string, example: 'settings' },
               id: { type: :string },
-              attributes: {
-                type: :object,
-                properties: {
-                  title: { type: :string, example: Faker::Lorem.sentence },
-                  description: { type: :string, example: Faker::Lorem.sentence }
-                }
-              }
-            }
-          },
-          admin: {
-            type: :object,
-            properties: {
-              type: { type: :string, example: 'admins' },
-              id: { type: :string },
-              attributes: {
-                type: :object,
-                properties: {
-                  name: { type: :string, example: 'Gusttavo Limma' },
-                  email: { type: :string, example: Faker::Internet.email },
-                  active: { type: :boolean },
-                  created_at: { type: :string, example: Time.current },
-                  updated_at: { type: :string, example: Time.current }
-                }
-              }
-            }
-          },
-          panel: {
-            type: :object,
-            properties: {
-              type: { type: :string, example: 'panels' },
-              id: { type: :string },
-              attributes: {
-                type: :object,
-                properties: {
-                  name: { type: :string },
-                  active: { type: :boolan },
-                  show_price: { type: :boolan },
-                  show_call: { type: :boolan },
-                  show_variation: { type: :boolan }
-                }
-              }
-            }
-          }
-        },
-        securitySchemes: {
-          bearer: {
-            type: :http,
-            scheme: :bearer
+              full_name: { type: :string },
+              email: { type: :string },
+              account_key: { type: :string, nullable: true },
+              key: { type: :string },
+              phone_number: { type: :string },
+              metadata: { type: :string }
+            },
+            required: %w[id full_name email key phone_number metadata]
           }
         }
       },
       servers: [
         {
-          url: 'http://localhost:3000',
+          url: 'http://localhost:3005',
           variables: {
             defaultHost: {
-              default: 'http://localhost:3000'
+              default: 'http://localhost:3005'
             }
           }
         }

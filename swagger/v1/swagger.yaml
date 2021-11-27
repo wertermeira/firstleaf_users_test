@@ -1,0 +1,92 @@
+---
+openapi: 3.0.1
+info:
+  title: API V1
+  version: v1
+paths:
+  "/users":
+    get:
+      summary: All users
+      tags:
+      - Users
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  "$ref": "#/components/schemas/user"
+    post:
+      summary: Create user
+      tags:
+      - Users
+      parameters: []
+      responses:
+        '201':
+          description: Created
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/user"
+        '422':
+          description: Unprocessable Entity
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                user:
+                  type: object
+                  properties:
+                    full_name:
+                      type: string
+                    email:
+                      type: string
+                    phone_number:
+                      type: string
+                    metadata:
+                      type: string
+                    password:
+                      type: string
+                    password_confirmation:
+                      type: string
+                  required:
+                  - full_name
+                  - email
+                  - password
+                  - password_confirmation
+components:
+  schemas:
+    user:
+      type: object
+      properties:
+        id:
+          type: string
+        full_name:
+          type: string
+        email:
+          type: string
+        account_key:
+          type: string
+          nullable: true
+        key:
+          type: string
+        phone_number:
+          type: string
+        metadata:
+          type: string
+      required:
+      - id
+      - full_name
+      - email
+      - key
+      - phone_number
+      - metadata
+servers:
+- url: http://localhost:3005
+  variables:
+    defaultHost:
+      default: http://localhost:3005
