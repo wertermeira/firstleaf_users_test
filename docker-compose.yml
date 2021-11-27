@@ -19,6 +19,7 @@ services:
   web:
     build: .
     tty: true
+    restart: always
     container_name: firstleaf_test
     env_file:
       - .env.development
