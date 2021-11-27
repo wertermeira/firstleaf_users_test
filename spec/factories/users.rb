@@ -6,6 +6,6 @@ FactoryBot.define do
     password { Faker::Internet.password(min_length: 8, max_length: 72) }
     key { SecureRandom.uuid }
     account_key { SecureRandom.uuid }
-    metadata { 'male, age 32, unemployed, college-educated' }
+    metadata { Faker::Lorem.sentence(word_count: rand(3..20)) }
   end
 end

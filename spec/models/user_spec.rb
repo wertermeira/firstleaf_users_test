@@ -21,6 +21,8 @@ RSpec.describe User, type: :model do
     it { is_expected.to validate_presence_of(:password).on(:create) }
     it { is_expected.to validate_length_of(:password).is_at_least(6).is_at_most(72) }
 
+    it { is_expected.to validate_presence_of(:account_key).on(:update) }
+
     %i[email full_name].each do |column|
       it { is_expected.to validate_length_of(column).is_at_most(200) }
     end

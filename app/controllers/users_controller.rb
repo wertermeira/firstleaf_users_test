@@ -1,6 +1,7 @@
 class UsersController < ApplicationController
   def index
-    @users = User.all
+    @users = UserSearchQuery.new(params[:query]).call if params[:query].present?
+    @users ||= User.all
     render json: @users, each_serializer: UserSerializer, status: :ok
   end
 
