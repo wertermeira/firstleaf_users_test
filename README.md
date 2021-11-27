@@ -1,7 +1,7 @@
 # Firstleaf Take Home Project
 
 ## instructions
-url: http://localhost:3005\
+url: http://localhost:3005 \
 populate users: docker exec -it firstleaf_test bash -c 'bundle exec rails populate:users'
 doc: /api-docs
 ### to start the application (step 1)
