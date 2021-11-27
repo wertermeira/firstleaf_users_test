@@ -20,7 +20,7 @@ ActiveRecord::Schema.define(version: 2021_11_26_202940) do
     t.string "email", null: false
     t.string "phone_number", null: false
     t.string "full_name"
-    t.string "password_digest"
+    t.string "password_digest", null: false
     t.string "key", null: false
     t.string "account_key"
     t.text "metadata"
