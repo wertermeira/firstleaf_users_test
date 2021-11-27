@@ -1,11 +1,15 @@
 # Firstleaf Take Home Project
 
 ## instructions
+
+### to start the application (step 1)
+'docker-compose up'
+
+### documentation
+
 url: http://localhost:3005 \
 populate users: docker exec -it firstleaf_test bash -c 'bundle exec rails populate:users' \
 doc: /api-docs
-### to start the application (step 1)
-'docker-compose up'
 
 ### to run test (require first step)
 docker exec -it firstleaf_test bash -c 'bundle exec rspec'
