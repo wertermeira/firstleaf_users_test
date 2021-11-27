@@ -8,8 +8,8 @@
 docker exec -it firstleaf_test bash -c 'bundle exec rspec'
 
 ### Register user
-endpoint: POST /users
-body exemple to register
+endpoint: POST /users\
+body exemple to register\
 ```
 {
     "user": {
@@ -24,8 +24,8 @@ body exemple to register
 ```
 
 ### List all users and search
-endpoint: GET /users (return all users)
-endpoint: GET /users?query={something} (search user by query)
+endpoint: GET /users (return all users)\
+endpoint: GET /users?query={something} (search user by query)\
 ## Assignment
 Today, we're going to design an application that will function as a user service.
 This service supports new user creation and returning users that are currently
