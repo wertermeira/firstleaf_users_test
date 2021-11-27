@@ -17,6 +17,7 @@
 !/log/.keep
 !/tmp/.keep
 coverage
+.env.development
 
 # Ignore uploaded files in development
 /storage/*

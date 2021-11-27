@@ -14,12 +14,12 @@ RSpec.describe User, type: :model do
   describe 'when validation' do
     it { is_expected.to have_secure_password }
 
-    %i[email full_name phone_number key].each do |column|
+    %i[email full_name phone_number].each do |column|
       it { is_expected.to validate_presence_of(column) }
     end
 
     it { is_expected.to validate_presence_of(:password).on(:create) }
-    it { is_expected.to validate_length_of(:password).is_at_least(6).is_at_most(100) }
+    it { is_expected.to validate_length_of(:password).is_at_least(6).is_at_most(72) }
 
     %i[email full_name].each do |column|
       it { is_expected.to validate_length_of(column).is_at_most(200) }
@@ -37,7 +37,7 @@ RSpec.describe User, type: :model do
       subject { create(:user) }
 
       %i[email phone_number key account_key].each do |column|
-        it { is_expected.to validate_uniqueness_of(column) }
+        it { is_expected.to validate_uniqueness_of(column).case_insensitive }
       end
     end
   end

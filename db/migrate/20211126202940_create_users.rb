@@ -4,7 +4,7 @@ class CreateUsers < ActiveRecord::Migration[5.2]
       t.string :email, char: 200, null: false, unique: true
       t.string :phone_number, char: 20, null: false, unique: true
       t.string :full_name, char: 200
-      t.string :password_digest
+      t.string :password_digest, null: false
       t.string :key, char: 100, null: false, unique: true
       t.string :account_key, char: 100, unique: true
       t.text :metadata, char: 2000
