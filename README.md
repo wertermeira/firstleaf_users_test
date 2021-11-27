@@ -1,5 +1,31 @@
 # Firstleaf Take Home Project
 
+## instructions
+### to start the application (step 1)
+'docker-compose up'
+
+### to run test (require first step)
+docker exec -it firstleaf_test bash -c 'bundle exec rspec'
+
+### Register user
+endpoint: POST /users
+body exemple to register
+```
+{
+    "user": {
+        "email": "examplefake@gmail.com",
+        "full_name": "test",
+        "password": "123456",
+        "phone_number": "74 988626340",
+        "password_confirmation": "123456",
+        "metadata": "male, age 32, unemployed, college-educated"
+    }
+}
+```
+
+### List all users and search
+endpoint: GET /users (return all users)
+endpoint: GET /users?query={something} (search user by query)
 ## Assignment
 Today, we're going to design an application that will function as a user service.
 This service supports new user creation and returning users that are currently
