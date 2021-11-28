@@ -9,15 +9,27 @@ paths:
       summary: All users
       tags:
       - Users
+      parameters:
+      - name: query
+        in: query
+        required: false
+        description: Search users by full name, email or metadata
+        schema:
+          type: string
       responses:
         '200':
           description: Success
           content:
             application/json:
               schema:
-                type: array
-                items:
-                  "$ref": "#/components/schemas/user"
+                type: object
+                properties:
+                  users:
+                    type: array
+                    items:
+                      "$ref": "#/components/schemas/user"
+        '422':
+          description: Unprocessable entity
     post:
       summary: Create user
       tags:

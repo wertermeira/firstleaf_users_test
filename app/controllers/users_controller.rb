@@ -5,7 +5,7 @@ class UsersController < ApplicationController
       @users = UserSearchQuery.new(params[:query]).call
     end
     @users ||= User.all
-    render json: @users, each_serializer: UserSerializer, status: :ok
+    render json: { users: @users.map { |user| UserSerializer.new(user) } }, status: :ok
   end
 
   def create
