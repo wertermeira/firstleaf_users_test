@@ -27,6 +27,13 @@ RSpec.describe 'users', type: :request do
           end
         end
       end
+
+      response 422, 'Unprocessable entity' do
+        let(:query) { '' }
+        run_test! do
+          expect(json_body.dig('error')).to eq('param is missing or the value is empty: query')
+        end
+      end
     end
 
     post 'Create user' do
