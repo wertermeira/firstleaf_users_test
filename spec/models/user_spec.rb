@@ -15,7 +15,7 @@ RSpec.describe User, type: :model do
     let(:email) { 'Site@Gmail.com' }
     let(:user) { create(:user, email: email) }
     context 'when email downcase' do
-      it {  expect(user.email).to eq(email.downcase) }
+      it { expect(user.email).to eq(email.downcase) }
     end
   end
 
