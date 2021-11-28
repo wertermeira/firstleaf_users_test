@@ -13,6 +13,9 @@ class User < ApplicationRecord
   validates :account_key, presence: true, on: :update
 
   before_create :generate_key
+  before_create do
+    self.email = email.downcase
+  end
 
   private
 
