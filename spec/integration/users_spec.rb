@@ -13,17 +13,19 @@ RSpec.describe 'users', type: :request do
                 description: 'Search users by full name, email or metadata'
 
       response 200, 'Success' do
-        schema type: :array, items: { '$ref' => '#/components/schemas/user' }
+        schema type: :object, properties: {
+          users: { type: :array, items: { '$ref' => '#/components/schemas/user' } }
+        }
         context 'when all users' do
           run_test! do
-            expect(json_body.length).to eq(users_count)
+            expect(json_body['users'].length).to eq(users_count)
           end
         end
 
         context 'when search by email' do
           let(:query) { User.find(User.ids.sample).email }
           run_test! do
-            expect(json_body.length).to eq(1)
+            expect(json_body['users'].length).to eq(1)
           end
         end
       end
