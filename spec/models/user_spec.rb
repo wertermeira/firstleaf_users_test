@@ -11,6 +11,14 @@ RSpec.describe User, type: :model do
     end
   end
 
+  describe 'when save user' do
+    let(:email) { 'Site@Gmail.com' }
+    let(:user) { create(:user, email: email) }
+    context 'when email downcase' do
+      it { expect(user.email).to eq(email.downcase) }
+    end
+  end
+
   describe 'when validation' do
     it { is_expected.to have_secure_password }
 
