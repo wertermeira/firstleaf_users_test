@@ -9,7 +9,7 @@ class GenerateAccountKey
     response = connection.post(endpoint: 'account', headers: default_headers, payload: attributes.to_json)
     return response.body if response.status == 200
 
-    raise ExceptionCode.new(response.code, response.body)
+    raise ExceptionCode.new(response.status, response.body)
   end
 
   private
